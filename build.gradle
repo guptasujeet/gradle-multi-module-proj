@@ -13,11 +13,13 @@ buildscript {
 plugins {
     id "org.flywaydb.flyway" version "${flyway_version}" apply false
     id 'java'
+    id 'com.adarshr.test-logger' version '4.0.0'
 }
 
 allprojects {
     apply plugin: 'java-library'
     version="1.0.SNAPSHOT"
+    apply plugin: 'com.adarshr.test-logger'
 
     repositories {
         mavenCentral()
