@@ -1,9 +1,7 @@
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MainTest {
 
@@ -24,9 +22,9 @@ public class MainTest {
     }
 
     @Test
-    @Ignore("Ignoring this test intentionally")
-    public void failedTest(){
-        Assert.fail("Marking test failed intentionally");
+    @Disabled("Ignoring this test intentionally")
+    public void failedTest() {
+        fail("Marking test failed intentionally");
     }
 
 }

@@ -1,9 +1,9 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MainTest {
 
     @Test
-    public void testHello(){
+    public void testHello() {
         System.out.println("Hello from Tests");
     }
 
