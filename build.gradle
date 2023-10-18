@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        junit_version='4.12'
+        flyway_version='6.3.1'
+        h2_version='2.1.210'
+    }
+
+    dependencies {
+        classpath("com.h2database:h2:${h2_version}")
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "${flyway_version}" apply false
+    id 'java'
+}
+
+allprojects {
+    apply plugin: 'java'
+    version="1.0.SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+}
+
+subprojects {
+
+}
+
+version="1.0.SNAPSHOT"
+
+project(':Repository'){}
+
+project(':JacketService'){
+    dependencies {
+       implementation project(':Repository')
+    }
+}
+
+project(':HibernateRepository'){
+    dependencies {
+       implementation project(':Repository'), project(':JacketService')
+    }
+}
+
+["JacketService", "HibernateRepository", "Repository"].each { name ->
+    project("$name") {
+        apply plugin: 'org.flywaydb.flyway'
+
+        task myCustomTask{
+            doFirst {
+                println ("Printing doFirst from myCustomTask -> $name")
+            }
+        }
+    }
+
+}
