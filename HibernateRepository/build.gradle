@@ -1,4 +1,15 @@
 
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 dependencies {
     testImplementation "junit:junit:${junit_version}"
+}
+
+test {
+    testLogging {
+        events  TestLogEvent.PASSED,
+                TestLogEvent.FAILED,
+                TestLogEvent.SKIPPED
+    }
 }
